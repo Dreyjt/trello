@@ -30,7 +30,5 @@ jobs:
       - name: Update Trello on Success
         if: success()
         run: |
-          curl -X PUT "http://api.trello.com/1/cards/${{ secrets.TRELLO_CARD_ID }}" \
-          -d "name=CI Passed - $(date)" \
-          -d "key=${{ secrets.TRELLO_KEY }}" \
-          -d "token=${{ secrets.TRELLO_TOKEN }}"
+          curl -X PUT "https://api.trello.com/1/cards/${{ secrets.TRELLO_CARD_ID }}" \
+          --data "key=${{ secrets.TRELLO_KEY }}&token=${{ secrets.TRELLO_TOKEN }}&name=CI Passed - $(date)"
